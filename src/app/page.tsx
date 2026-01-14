@@ -1,9 +1,21 @@
+import { Container } from "@/components/Container";
+import { Header } from "@/components/Header";
+import { PostList } from "@/components/PostList/PostList";
+import { SpinLoader } from "@/components/SpinLoader/undex";
+import { Suspense } from "react";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1 className="text-6xl font-bold text-blue-500 hover:text-white hover:bg-blue-500 transition-all duration-1000">
-        Hello World
-      </h1>
-    </div>
+    <Container>
+      <Header />
+
+      <Suspense fallback={<SpinLoader />}>
+        <PostList />
+      </Suspense>
+
+      <footer>
+        <p className="text-6xl font-bold text-center py-8">Footer</p>
+      </footer>
+    </Container>
   );
 }
