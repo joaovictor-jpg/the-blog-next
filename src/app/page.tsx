@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
 import { Header } from "@/components/Header";
+import { PostFeatured } from "@/components/PostFeatured";
 import { PostList } from "@/components/PostList/PostList";
 import { SpinLoader } from "@/components/SpinLoader/undex";
 import { Suspense } from "react";
@@ -8,6 +9,8 @@ export default function HomePage() {
   return (
     <Container>
       <Header />
+
+      <PostFeatured />
 
       <Suspense fallback={<SpinLoader />}>
         <PostList />
