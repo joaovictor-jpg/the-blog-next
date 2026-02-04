@@ -5,12 +5,9 @@ import { Suspense } from "react";
 
 export default function HomePage() {
   return (
-    <>
+    <Suspense fallback={<SpinLoader continerClasse="min-h-20 mb-16" />}>
       <PostFeatured />
-
-      <Suspense fallback={<SpinLoader />}>
-        <PostList />
-      </Suspense>
-    </>
+      <PostList />
+    </Suspense>
   );
 }

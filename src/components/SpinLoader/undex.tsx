@@ -2,7 +2,7 @@ type SpinLoaderProps = {
   continerClasse?: string;
 };
 
-export function SpinLoader({ continerClasse }: SpinLoaderProps) {
+export function SpinLoader({ continerClasse }: Readonly<SpinLoaderProps>) {
   return (
     <div
       className={`flex items-center justify-center container ${continerClasse}`}
