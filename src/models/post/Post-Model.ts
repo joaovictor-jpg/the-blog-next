@@ -11,24 +11,24 @@ import {
 export class PostModel {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
-  @Column()
+  @Column({ name: "title", type: "text", nullable: false })
   title!: string;
-  @Column()
+  @Column({ name: "slug", type: "text", nullable: false, unique: true })
   slug!: string;
-  @Column()
+  @Column({ name: "excerpt", type: "text", nullable: false })
   excerpt!: string;
-  @Column()
+  @Column({ name: "content", type: "text", nullable: false })
   content!: string;
-  @Column()
+  @Column({ name: "cover_image_url", type: "text", nullable: false })
   coverImageUrl!: string;
-  @Column()
+  @Column({ name: "published", type: "boolean", nullable: false })
   published!: boolean;
-  @CreateDateColumn()
-  createdAt!: string;
-  @UpdateDateColumn()
-  updatedAt!: string;
-  @Column()
+  @Column({ name: "author", type: "text", nullable: false })
   author!: string;
-  @DeleteDateColumn()
+  @CreateDateColumn("created_at")
+  createdAt!: Date;
+  @UpdateDateColumn("updated_at")
+  updatedAt!: Date;
+  @DeleteDateColumn("deleted_at")
   deletedAt!: Date;
 }
