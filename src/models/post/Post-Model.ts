@@ -11,24 +11,24 @@ import {
 export class PostModel {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
-  @Column({ name: "title", type: "text", nullable: false })
+  @Column({ name: "title", type: "varchar", nullable: false })
   title!: string;
-  @Column({ name: "slug", type: "text", nullable: false, unique: true })
+  @Column({ name: "slug", type: "varchar", nullable: false, unique: true })
   slug!: string;
-  @Column({ name: "excerpt", type: "text", nullable: false })
+  @Column({ name: "excerpt", type: "varchar", nullable: false })
   excerpt!: string;
-  @Column({ name: "content", type: "text", nullable: false })
+  @Column({ name: "content", type: "varchar", nullable: false })
   content!: string;
-  @Column({ name: "cover_image_url", type: "text", nullable: false })
+  @Column({ name: "cover_image_url", type: "varchar", nullable: false })
   coverImageUrl!: string;
   @Column({ name: "published", type: "boolean", nullable: false })
   published!: boolean;
-  @Column({ name: "author", type: "text", nullable: false })
+  @Column({ name: "author", type: "varchar", nullable: false })
   author!: string;
-  @CreateDateColumn("created_at")
+  @CreateDateColumn({ name: "created_at" })
   createdAt!: Date;
-  @UpdateDateColumn("updated_at")
+  @UpdateDateColumn({ name: "updated_at" })
   updatedAt!: Date;
-  @DeleteDateColumn("deleted_at")
+  @DeleteDateColumn({ name: "deleted_at" })
   deletedAt!: Date;
 }

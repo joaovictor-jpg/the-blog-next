@@ -6,19 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "run-migration": "npx tsx ./node-modules/typeorm/clis.js migration:run -d src/db/data-source.ts",
+    "generation-migration": "npx tsx ./node-modules/typeorm/cli.js migration:generate src/db/migrations/ -d src/db/data-source.ts ",
+    "revert-migration": "npx tsx ./node-modules/typeorm/clis.js migration:revert -d src/db/data-source.ts"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
     "date-format": "^4.0.14",
     "next": "16.1.1",
+    "pg": "^8.18.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-markdown": "^10.1.0",
     "reflect-metadata": "^0.2.2",
     "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "sqlite3": "^5.1.7",
     "typeorm": "^0.3.28"
   },
   "devDependencies": {
@@ -27,10 +30,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/sqlite3": "^5.1.0",
+    "dotenv": "^17.2.4",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5"
   }
