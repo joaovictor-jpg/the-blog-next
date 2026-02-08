@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "run-migration": "npx tsx ./node-modules/typeorm/clis.js migration:run -d src/db/data-source.ts",
-    "generation-migration": "npx tsx ./node-modules/typeorm/cli.js migration:generate src/db/migrations/ -d src/db/data-source.ts ",
+    "generation-migration": "npx tsx ./node-modules/typeorm/cli.js migration:generate src/db/migrations/ -d src/db/data-source.ts",
     "revert-migration": "npx tsx ./node-modules/typeorm/clis.js migration:revert -d src/db/data-source.ts"
   },
   "dependencies": {

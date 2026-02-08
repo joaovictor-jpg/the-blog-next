@@ -1,4 +1,4 @@
-import { JsonPostRepository } from "./json-post-repository";
 import { PostRepository } from "./PostRepository";
+import { TypeOrmPostRepository } from "./typeOrmPostRepository";
 
-export const postRepository: PostRepository = new JsonPostRepository();
+export const postRepository: PostRepository = new TypeOrmPostRepository();

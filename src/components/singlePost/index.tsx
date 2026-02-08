@@ -23,7 +23,8 @@ export async function SinglePost({ slug }: Readonly<SinglePostProps>) {
         />
         <PostHeading url={`/post/${post.slug}`}>{post.title}</PostHeading>
         <p>
-          Autor: {post.author} | {<PostDate date={post.createdAt} />}
+          Autor: {post.author} |{" "}
+          {<PostDate date={post.createdAt.toISOString()} />}
         </p>
       </header>
 

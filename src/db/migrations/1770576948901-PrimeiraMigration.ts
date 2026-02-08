@@ -21,7 +21,7 @@ export class PrimeiraMigration1770576948901 implements MigrationInterface {
           '${post.coverImageUrl}',
           ${post.published}, 
           '${escape(post.author)}', 
-          '${post.createdAt}', 
+          '${post.createdAt}',
           '${post.updatedAt}'
             )`;
       })

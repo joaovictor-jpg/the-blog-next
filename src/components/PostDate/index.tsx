@@ -9,9 +9,9 @@ export function PostDate({ date }: Readonly<PostDateProps>) {
     <time
       className="text-slate-600 text-sm"
       dateTime={date}
-      title={formatDateTime(date)}
+      title={formatRelativeDate(date)}
     >
-      {formatRelativeDate(date)}
+      {formatDateTime(date)}
     </time>
   );
 }

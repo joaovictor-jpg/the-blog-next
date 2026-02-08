@@ -17,6 +17,9 @@ export class TypeOrmPostRepository implements PostRepository {
       where: {
         published: true,
       },
+      order: {
+        createdAt: "desc",
+      },
     });
   }
   async findById(id: string): Promise<PostModel> {
@@ -25,9 +28,14 @@ export class TypeOrmPostRepository implements PostRepository {
     if (!post) throw notFound();
     return post;
   }
-  async findBySlug(slug: string): Promise<PostModel> {
+  async findBySlugPublic(slug: string): Promise<PostModel> {
     const repo = await this.getRepo();
-    const postSlug = await repo.findOneBy({ slug });
+    const postSlug = await repo.findOne({
+      where: {
+        published: true,
+        slug,
+      },
+    });
     if (!postSlug) throw notFound();
     return postSlug;
   }
