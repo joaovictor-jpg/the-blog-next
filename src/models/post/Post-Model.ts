@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { CachedPostResponse } from "../DTOs/Post-Dtos-response";
 
 @Entity("posts")
 export class PostModel {
@@ -31,4 +32,18 @@ export class PostModel {
   updatedAt!: Date;
   @DeleteDateColumn({ name: "deleted_at" })
   deletedAt!: Date;
+
+  toPostCache(): CachedPostResponse {
+    return {
+      id: this.id,
+      title: this.title,
+      slug: this.slug,
+      excerpt: this.excerpt,
+      content: this.content,
+      coverImageUrl: this.coverImageUrl,
+      author: this.author,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    };
+  }
 }

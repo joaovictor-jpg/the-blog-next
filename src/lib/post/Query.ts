@@ -1,21 +1,31 @@
+"use cache";
+import { CachedPostResponse } from "@/models/DTOs/Post-Dtos-response";
 import { postRepository } from "@/repository/post";
-import { notFound } from "next/navigation";
 import { cache } from "react";
 
 export const findAllPublicPostCach = cache(
-  async () => await postRepository.findAllPublic(),
+  async (): Promise<CachedPostResponse[]> => {
+    const posts = await postRepository.findAllPublic();
+    return posts.map((post) => post.toPostCache());
+  },
 );
 
-export const findBySlugCach = cache(async (slug: string) => {
-  const post = await postRepository
-    .findBySlugPublic(slug)
-    .catch(() => undefined);
+export const findBySlugCach = cache(
+  async (slug: string): Promise<CachedPostResponse | null> => {
+    const post = await postRepository
+      .findBySlugPublic(slug)
+      .catch(() => undefined);
 
-  if (!post) notFound();
+    if (!post) return null;
 
-  return post;
-});
+    return post.toPostCache();
+  },
+);
 
 export const findByIdCach = cache(
-  async (Id: string) => await postRepository.findById(Id),
+  async (id: string): Promise<CachedPostResponse | null> => {
+    const post = await postRepository.findById(id).catch(() => null);
+    if (!post) return null;
+    return post.toPostCache();
+  },
 );

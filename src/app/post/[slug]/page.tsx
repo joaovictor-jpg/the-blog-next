@@ -2,6 +2,7 @@ import { SinglePost } from "@/components/singlePost";
 import { SpinLoader } from "@/components/SpinLoader/undex";
 import { findBySlugCach } from "@/lib/post/Query";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 type PostSlugPageProps = {
@@ -13,6 +14,7 @@ export async function generateMetaData({
 }: PostSlugPageProps): Promise<Metadata> {
   const { slug } = await params;
   let post = await findBySlugCach(slug);
+  if (!post) return notFound();
   return {
     title: post.title,
     description: post.excerpt,
